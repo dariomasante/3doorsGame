@@ -1,0 +1,47 @@
+net 
+{
+    node_size = (76 36);
+}
+
+decision PlayerChoice
+{
+    label = "PlayerChoice";
+    position = (370 159);
+    states = ("a"  "b"  "c");
+}
+
+node WinnerDoor
+{
+    label = "WinnerDoor";
+    position = (142 160);
+    states = ("a"  "b"  "c");
+}
+
+node HostDisclosure
+{
+    label = "HostDisclosure";
+    position = (256 -17);
+    states = ("a"  "b"  "c");
+}
+
+potential (PlayerChoice |)
+{
+}
+
+potential (WinnerDoor |)
+{
+    data = (0.33333333 0.33333333 0.33333333);
+}
+
+potential (HostDisclosure | PlayerChoice WinnerDoor)
+{
+    data = (((0.00000000 0.50000000 0.50000000)
+        (0.00000000 0.00000000 1.00000000)
+        (0.00000000 1.00000000 0.00000000))
+        ((0.00000000 0.00000000 1.00000000)
+        (0.50000000 0.00000000 0.50000000)
+        (1.00000000 0.00000000 0.00000000))
+        ((0.00000000 1.00000000 0.00000000)
+        (1.00000000 0.00000000 0.00000000)
+        (0.50000000 0.50000000 0.00000000)));
+}
